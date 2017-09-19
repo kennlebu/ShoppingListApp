@@ -4,6 +4,7 @@
 
 <head>
     <title>Da Shopping List</title>
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
 </head>
 
 <body>
@@ -12,28 +13,34 @@
             <div class="logo">
                 Da Shopping List
             </div>
+            <div class="right">
+                <a href="signup.html">
+                    Sign up</a>
+            </div>
         </div>
     </nav>
 
     <div class="content">
-        <div class="visitor-message">
-            <p>Do you often go to the supermarket and forget what you were meant to buy? Worry no more. <span class="app-name">Da Shopping List</span> is here for you.</p>
+        <div class="row">
+            <div class="visitor-message">
+                <p>Do you often go to the supermarket and forget what you were meant to buy? Worry no more. <span class="app-name">Da Shopping List</span> is here for you.</p>
 
-            <p>Add your shopping lists, add items to a shopping list and never worry about recalling all the things you had to buy. Sign up or Login to get started for free!</p>
+                <p>Add your shopping lists, add items to a shopping list and never worry about recalling all the things you had to buy. Sign up or Login to get started for free!</p>
 
-        </div>
-        <div class="login-form">
-            <h3>Login</h3>
-            <div>
+            </div>
+            <div class="login-form">
+                <h3>Login</h3>
                 <div>
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Enter username" />
+                    <div class="form-group">
+                        <label for="username">Username</label><br/>
+                        <input type="text" id="username" name="username" placeholder="Enter username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label><br/>
+                        <input type="password" id="password" name="password" placeholder="Enter password" />
+                    </div>
+                    <input type="submit" value="Login" />
                 </div>
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter password" />
-                </div>
-                <input type="submit" value="Login" />
             </div>
         </div>
         <!-- End content -->
