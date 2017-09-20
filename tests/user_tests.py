@@ -37,4 +37,6 @@ class UserTests(unittest.TestCase):
 
         user.delete_shopping_list('Sunday shopping')
         self.assertEqual(len(user.shopping_lists), 0, msg="There should not be any shopping lists")
-         
+
+if __name__ == '__main__':
+    unittest.main()
