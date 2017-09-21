@@ -9,19 +9,21 @@ class ShoppingListTests(unittest.TestCase):
         """ Tests whether a shopping list is created """
 
         user = User('kennlebu', 'password', 'Kenneth', 'Lebu')
-        user.create_shopping_list('Sunday shopping', '15/10/2017', user.username)
+        user.create_shopping_list('Sunday shopping', '15/10/2017')
         user.shopping_lists[0].add_item('Bacon')
 
-        self.assertEqual(len(user.shopping_lists[0].shopping_list_items), 1,
+        self.assertEqual(len(user.shopping_lists[0].items), 1,
                          msg='There should be one shopping list item')
 
     def test_delete_shopping_list_item(self):
         """ Tests whether a shopping list item is deleted """
 
         user = User('kennlebu', 'password', 'Kenneth', 'Lebu')
+        user.create_shopping_list('Sunday shopping', '15/10/2017')
+        user.shopping_lists[0].add_item('Bacon')
         user.shopping_lists[0].delete_item('Bacon')
 
-        self.assertEqual(len(user.shopping_lists[0].shopping_list_items), 0,
+        self.assertEqual(len(user.shopping_lists[0].items), 0,
                          msg='There should be no shopping list item')
 
 if __name__ == '__main__':
