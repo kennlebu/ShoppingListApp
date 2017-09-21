@@ -117,9 +117,11 @@ def create_shopping_list():
 def shopping_list():
     """ Shows a shopping list """
 
-    request_type = request.args.get('type')
-    if request_type == 'new':
-        return render_template('shopping-list.html')
+    list_name = request.args.get('shoppinglist')
+
+    return render_template('shopping-list.html',
+                           shopping_list=get_shopping_list(list_name),
+                           edit=False)
 
 
 def get_current_user():
@@ -128,3 +130,10 @@ def get_current_user():
     for user in users:
         if user.username == session['username']:
             return user
+
+def get_shopping_list(name):
+    """ Returns a shopping list given the name """
+
+    for each in get_current_user().shopping_lists:
+            if each.shopping_list_name == name:
+                return each

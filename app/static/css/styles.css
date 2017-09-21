@@ -58,6 +58,19 @@ body {
     box-shadow: 1px 13px 25px 0 rgba(0, 0, 0, 0.3), 0 11px 7px 0 rgba(0, 0, 0, 0.2);
 }
 
+.shopping-list-card-big {
+    min-height: 150px;
+    border: 1px solid gray;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    padding: 20px;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
 .shopping-list-name {
     height: 25px;
     font-size: 22px;
