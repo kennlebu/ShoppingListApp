@@ -11,10 +11,9 @@ def index():
 
     return render_template('index.html')
 
-@app.route('/signup', methods=['GET','POST'])
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
     """ The signup page """
-
 
     # Get form content and sign up user
     if request.method == 'POST':
@@ -50,5 +49,28 @@ def signup():
             return redirect(url_for('login'))
 
     return render_template('signup.html')
+
+    return render_template('login.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """ Logins in a user to the app """
+
+    if request.method == 'POST':
+
+        # Login button clicked?
+        if request.form['login']:
+            username = request.form['username']
+            password = request.form['password']
+
+        # Check credentials
+        for user in users:
+            if user.username == username and user.password == password:
+                session['logged_in'] = True
+                session['name'] = '{0} {1}'.format(user.firstname, user.lastname)
+                return redirect(url_for('index'))
+
+        return render_template('login.html', error_msg='Invalid username or password')
 
     return render_template('login.html')
