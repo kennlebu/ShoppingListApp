@@ -32,7 +32,7 @@ class UserTests(unittest.TestCase):
 
         # Deleting a shopping list that does not exist
         user.delete_shopping_list('Monday shopping')
-        self.assertEqual(user.delete_shopping_list('Monday shopping'), 'No such shopping list',
+        self.assertEqual(user.delete_shopping_list('Monday shopping'), 'Shopping list not found',
                          msg="There should not be a shopping list called Monday shopping")
 
         user.delete_shopping_list('Sunday shopping')

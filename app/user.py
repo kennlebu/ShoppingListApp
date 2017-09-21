@@ -25,4 +25,4 @@ class User:
                 return 'Item deleted'
 
         # Item not found
-        return 'Item not found'
+        return 'Shopping list not found'
