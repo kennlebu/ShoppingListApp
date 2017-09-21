@@ -1,5 +1,6 @@
 from flask import render_template, session, redirect, request, url_for
 from .user import User
+from .shopping_list import ShoppingList
 from app import app
 
 users = []
@@ -88,6 +89,38 @@ def logout():
 
     session['logged_in'] = False
     return redirect(url_for('login'))
+
+
+@app.route('/create_shopping_list', methods=['POST', 'GET'])
+def create_shopping_list():
+    """ Creates a new shopping list """
+
+    if request.method == 'POST':
+        if request.form['add_item']:
+            shopping_list_name = request.form['name']
+            due_date = request.form['due_date']
+
+            print(shopping_list_name)
+
+            user = get_current_user()
+
+            # Create the shopping list
+            my_shopping_list = ShoppingList(shopping_list_name, due_date, user.username)
+
+            # Add the list to the user's shopping lists
+            user.shopping_lists.append(my_shopping_list)
+
+            return redirect(url_for('index'))
+
+
+@app.route('/shopping-list', methods=['GET'])
+def shopping_list():
+    """ Shows a shopping list """
+
+    request_type = request.args.get('type')
+    if request_type == 'new':
+        return render_template('shopping-list.html')
+
 
 def get_current_user():
     """ Returns the user that is currently logged in """

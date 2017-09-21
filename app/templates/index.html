@@ -1,11 +1,11 @@
 {% extends "base.html" %} {% block content %}
 
 <div class="col-md-1">&nbsp;</div>
-<div class="row col-md-10 index-content-row">
+<div class="row col-md-11 index-content-row">
     <div class="col-md-12">
         <button class="btn btn-primary" data-toggle="modal" data-target="#modal-normal" type="button">New shopping list</button>
     </div>
-    <div class="col-md-12" style="margin:20 auto 0 auto;">
+    <div class="col-md-12" style="margin:20px auto 0 auto;">
 
         {% if user.shopping_lists|length > 0 %} {% for shopping_list in user.shopping_lists %}
         <a href="/shopping_list?action=view&shoppinglist={{ shopping_list.shopping_list_name }}">
@@ -14,10 +14,10 @@
                     {{ shopping_list.shopping_list_name }}
                 </div>
                 <div class="shopping-list-number col-md-11">
-                    {{ shopping_list.items|length }}
+                    {{ shopping_list.items|length }} items
                 </div>
                 <div class="shopping-list-date col-md-11">
-                    Due on {{ shopping_list.date_created }}
+                    Due on {{ shopping_list.due_date }}
                 </div>
             </div>
         </a>
@@ -54,7 +54,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-sm btn-primary" type="submit" name="add_item"><i class="fa fa-check"></i> Save</button>
+                <input class="btn btn-sm btn-primary" type="submit" name="add_item" value="Save">
             </div>
             </form>
         </div>
