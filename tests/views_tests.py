@@ -27,7 +27,7 @@ class ViewsTests(unittest.TestCase):
 
         with app.app.test_client() as client:
             response = client.get('/')
-            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.status_code, 302) # Redirects coz user isnt logged in
 
 if __name__ == '__main__':
     unittest.main()
