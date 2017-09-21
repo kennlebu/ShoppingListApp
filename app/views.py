@@ -9,7 +9,11 @@ users = []
 def index():
     """ The homepage showing the user dashboard """
 
-    return render_template('index.html')
+    # Redirect to login page if user is not logged in yet
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+
+    return render_template('index.html', user=get_current_user(), name=session['name'])
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -29,17 +33,20 @@ def signup():
             # Ensure there are no blank fields
             if (not firstname or not lastname or not username or not password or
                     not confirm_password):
-                return render_template('signup.html', error_msg='All fields are required')
+                return render_template('signup.html', error_msg='All fields are required',
+                                       page='signup')
 
             # Ensure passwords match
             if not password == confirm_password:
-                return render_template('signup.html', error_msg='Passwords should match')
+                return render_template('signup.html', error_msg='Passwords should match',
+                                       page='signup')
 
             # Check whether username has already been taken
             for user in users:
                 if user.username == username:
                     return render_template('signup.html',
-                                           error_msg='That username is already in use')
+                                           error_msg='That username is already in use',
+                                           page='signup')
 
             # Create and save the user
             user = User(username, password, firstname, lastname)
@@ -48,9 +55,7 @@ def signup():
             # Redirect the new user to login page
             return redirect(url_for('login'))
 
-    return render_template('signup.html')
-
-    return render_template('login.html')
+    return render_template('signup.html', page='signup')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -69,8 +74,24 @@ def login():
             if user.username == username and user.password == password:
                 session['logged_in'] = True
                 session['name'] = '{0} {1}'.format(user.firstname, user.lastname)
+                session['username'] = username
                 return redirect(url_for('index'))
 
         return render_template('login.html', error_msg='Invalid username or password')
 
     return render_template('login.html')
+
+
+@app.route('/logout')
+def logout():
+    """ Logs out a user """
+
+    session['logged_in'] = False
+    return redirect(url_for('login'))
+
+def get_current_user():
+    """ Returns the user that is currently logged in """
+
+    for user in users:
+        if user.username == session['username']:
+            return user
