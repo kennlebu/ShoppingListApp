@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Da Shopping List</title>
+    <script type=text/javascript src="{{ url_for('static', filename='css/styles.css') }}"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">
+                Da Shopping List
+            </div>
+        </div>
+        <div class="right">
+            <a href="/login">
+                    Login</a>
+        </div>
+    </nav>
+
+    <div class="content">
+
+        {% block content %}{% endblock %}
+
+        <!-- End content -->
+    </div>
+</body>
