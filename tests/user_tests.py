@@ -17,7 +17,7 @@ class UserTests(unittest.TestCase):
         """ Tests whether a shopping list is created successfully """
 
         user = User('kennlebu', 'password', 'Kenneth', 'Lebu')
-        user.create_shopping_list('Sunday shopping', '15/10/2017', user.username)
+        user.create_shopping_list('Sunday shopping', '15/10/2017')
 
         self.assertEqual(len(user.shopping_lists), 1, msg="There should be one shopping list created")
         self.assertEqual(user.shopping_lists[0].username, 'kennlebu',
@@ -27,7 +27,7 @@ class UserTests(unittest.TestCase):
         """ Tests whether a shopping list is deleted successfully """
 
         user = User('kennlebu', 'password', 'Kenneth', 'Lebu')
-        user.create_shopping_list('Sunday shopping', '15/10/2017', user.username)
+        user.create_shopping_list('Sunday shopping', '15/10/2017')
         self.assertEqual(len(user.shopping_lists), 1, msg="There should be one shopping list created")
 
         # Deleting a shopping list that does not exist
