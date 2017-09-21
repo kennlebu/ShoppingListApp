@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kennlebu/ShoppingListApp.svg?branch=master)](https://travis-ci.org/kennlebu/ShoppingListApp)
+
 # Da Shopping List
 #### Create shopping lists and never worry about forgetting to buy an item
 __DaShoppingList__ is an application that helps you remember everything you intend to buy whenever you go for shopping. Create shopping lists, add items to your lists, save your list and it will always be there.
