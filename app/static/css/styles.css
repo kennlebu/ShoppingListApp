@@ -1,14 +1,25 @@
+body {
+    padding-top: 70px;
+    background: url("../img/shopping-list.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
 .content {
     padding: 0 10%;
+    background: rgba(0, 0, 0, 0.7);
+    height: 100%;
+}
+
+.red {
+    border: 1px solid red;
 }
 
 .row {
-    margin-top: 10%;
     width: 100%;
 }
 
 .visitor-message {
-    margin-left: 10%;
+    margin-top: 5%;
     float: left;
     font-size: 20px;
     font-weight: 500;
@@ -57,4 +68,11 @@
     margin-top: 10px;
     font-size: 16px;
     color: gray;
+}
+
+#no-shopping-lists {
+    margin-top: 10%;
+    font-size: 25px;
+    color: darkslategrey;
+    text-align: center
 }
