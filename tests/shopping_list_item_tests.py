@@ -9,7 +9,7 @@ class ShoppingListItemTests(unittest.TestCase):
         """ Tests whether an item is created """
 
         user = User('kennlebu', 'password', 'Kenneth', 'Lebu')
-        user.create_shopping_list('Sunday shopping', '15/10/2017', user.username)
+        user.create_shopping_list('Sunday shopping', '15/10/2017')
         user.shopping_lists[0].add_item('Bacon')
         user.shopping_lists[0].add_item('Soap')
         item = user.shopping_lists[0].items[0]
@@ -26,7 +26,7 @@ class ShoppingListItemTests(unittest.TestCase):
         """ Tests whether an item is marked as bought """
 
         user = User('kennlebu', 'password', 'Kenneth', 'Lebu')
-        user.create_shopping_list('Sunday shopping', '15/10/2017', user.username)
+        user.create_shopping_list('Sunday shopping', '15/10/2017')
         user.shopping_lists[0].add_item('Bacon')
         item = user.shopping_lists[0].items[0]
 
@@ -38,7 +38,7 @@ class ShoppingListItemTests(unittest.TestCase):
         """ Tests whether an item is marked as not bought """
 
         user = User('kennlebu', 'password', 'Kenneth', 'Lebu')
-        user.create_shopping_list('Sunday shopping', '15/10/2017', user.username)
+        user.create_shopping_list('Sunday shopping', '15/10/2017')
         user.shopping_lists[0].add_item('Bacon')
         item = user.shopping_lists[0].items[0]
 
