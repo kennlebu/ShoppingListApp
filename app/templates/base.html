@@ -6,6 +6,8 @@
     <title>Da Shopping List</title>
     <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" type=text/css href="../static/css/bootstrap.min.css">
+    <script type=text/javascript src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
 </head>
 
@@ -16,17 +18,16 @@
             <div class="collapse navbar-collapse" style="float:right;">
                 <ul class="nav navbar-nav">
                     {% if name %}
-                    <li><a href="/logout">Log out ({{ name }})</li>
-                        {% elif page %}
+                    <li><a href="/logout">Log out ({{ name }})</li></a> {% elif page %}
                         <li><a href="/login">Login</a> {% else %}
-                        <li><a href="/signup">Sign up</a></li>
-                        {% endif %}
+                            <li><a href="/signup">Sign up</a></li>
+                            {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="content">
+    <div class="body-content">
 
         {% block content %}{% endblock %}
 

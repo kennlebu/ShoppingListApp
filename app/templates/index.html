@@ -1,10 +1,9 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="row col-md-12 index-content-row">
-    <div class="col-md-12 add-button">
-        <form method="post" action="/create_shopping_list">
-            <input class="btn btn-primary" type="submit" value="New shopping list" name="add_shopping_list" />
-        </form>
+<div class="col-md-1">&nbsp;</div>
+<div class="row col-md-10 index-content-row">
+    <div class="col-md-12">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modal-normal" type="button">New shopping list</button>
     </div>
     <div class="col-md-12" style="margin:20 auto 0 auto;">
 
@@ -28,4 +27,38 @@
     </div>
 
 </div>
+
+<!-- Normal Modal -->
+<div class="modal" id="modal-normal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="block" style="padding:0 10px;">
+                <div class="block-header bg-primary-dark">
+                    <h3 class="block-title">New Shopping List</h3>
+                </div>
+                <div class="block-content">
+                    <form class="form-horizontal push-10-t" method="post" action="/create_shopping_list">
+                        <div class="form-group">
+                            <label class="col-xs-12" for="name">Shopping list name</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" id="name" name="name" placeholder="Shopping list name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-12" for="due_date">Due date (dd/mm/yyyy)</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" id="due_date" name="due_date" placeholder="Due date (dd/mm/yyyy)" required>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-sm btn-primary" type="submit" name="add_item"><i class="fa fa-check"></i> Save</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END Normal Modal -->
 {% endblock %}
