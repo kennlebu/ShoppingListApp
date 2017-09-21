@@ -34,7 +34,7 @@ def signup():
 
             # Ensure passwords match
             if not password == confirm_password:
-                return render_template('signup.hrml', error_msg='Passwords should match')
+                return render_template('signup.html', error_msg='Passwords should match')
 
             # Check whether username has already been taken
             for user in users:
