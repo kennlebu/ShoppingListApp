@@ -35,18 +35,64 @@
         <h4>Due on {{ shopping_list.due_date }}</h4>
         <ul>
             {% for item in shopping_list.items %}
-            <li><input type="checkbox">{{ item.quantity }} {{ item.item_name }}</li>
+            <li>
+                <div class="checkbox">
+                    <input type="checkbox" {% if item.bought %} checked {% endif %}> {{ item.quantity }} {{ item.item_name }}
+                    </label>
+                </div>
+            </li>
             {% endfor %}
         </ul>
         <br/>
-        <form class="form-horizontal" action="/edit_shopping_list">
-            <input class="btn btn-primary" type="submit" name="edit_list" value="Edit">
-        </form>
-        <form action="/delete_shopping_list">
-            <input class="btn btn-danger" type="submit" name="delete_list" value="Delete">
-        </form>
+        <div class="row items-push">
+            <div style="float:left;margin-left:10px;">
+                <button class="btn btn-success" data-toggle="modal" data-target="#modal-add-item" type="button">Add item</button>
+            </div>
+            <div style="float:right">
+                <div style="float:left">
+                    <form method="link" class="form-horizontal" action="/edit_shopping_list">
+                        <input class="btn btn-primary" type="submit" name="edit_list" value="Edit">
+                    </form>
+                </div>
+                &nbsp;
+                <div style="float:right">
+                    <form action="/delete_shopping_list">
+                        <input class="btn btn-danger" type="submit" name="delete_list" value="Delete">
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     {% endif %}
     <div class="col-md-4">&nbsp;</div>
 </div>
+
+<!-- Add item Modal -->
+<div class="modal" id="modal-add-item" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="block" style="padding:0 10px;">
+                <div class="block-header bg-primary-dark">
+                    <h3 class="block-title">Add item</h3>
+                </div>
+                <div class="block-content">
+                    <form class="form-horizontal push-10-t" action="/add_item">
+                        <div class="form-group">
+                            <label class="col-xs-12" for="name">Item name</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" id="item" name="item" placeholder="Item name" required>
+                                <input type="hidden" name="shoppinglist" value="{{ shopping_list.shopping_list_name }}">
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Cancel</button>
+                <input class="btn btn-sm btn-primary" type="submit" name="add_item" value="Save">
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END Add item Modal -->
 {% endblock %}

@@ -124,6 +124,20 @@ def shopping_list():
                            edit=False)
 
 
+@app.route('/add_item', methods=['GET', 'POST'])
+def add_item():
+    """ Adds an item to a shopping list """
+
+    list_name = request.args.get('shoppinglist')
+    item_name = request.args.get('item')
+
+    # Add item to the shopping list
+    get_shopping_list(list_name).add_item(item_name)
+
+    return render_template('shopping-list.html',
+                           shopping_list=get_shopping_list(list_name),
+                           edit=False)
+
 def get_current_user():
     """ Returns the user that is currently logged in """
 
