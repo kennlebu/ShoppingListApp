@@ -37,7 +37,7 @@
             {% for item in shopping_list.items %}
             <li>
                 <div class="checkbox">
-                    <input type="checkbox" {% if item.bought %} checked {% endif %}> {{ item.quantity }} {{ item.item_name }}
+                    <input type="checkbox" {% if item.bought %} checked {% endif %} onclick="markItem(this, '{{ shopping_list.shopping_list_name }}', '{{ item.item_name }}');"> {{ item.quantity }} {{ item.item_name }}
                     </label>
                 </div>
             </li>
@@ -96,4 +96,35 @@
     </div>
 </div>
 <!-- END Add item Modal -->
+
+<script>
+    var checked;
+
+    function markItem(cb, shoppinglist, item_name) {
+        checked = cb.checked;
+        console.log("Clicked, new value = " + cb.checked + ", item name = " + item_name + ", shoppinglist = " + shoppinglist);
+
+        if (cb.checked) {
+            checked = 'checked';
+        } else {
+            checked = 'not_checked';
+        }
+
+        // some movie data
+        var params = {
+            'checked': checked,
+            'item_name': item_name,
+            'shoppinglist': shoppinglist
+        }
+
+        $.ajax({
+                url: '/mark_item',
+                type: 'POST',
+                data: params,
+            })
+            .done(function(result) { // on success get the return object from server
+                console.log(result) // do whatever with it. In this case see it in console
+            });
+    }
+</script>
 {% endblock %}

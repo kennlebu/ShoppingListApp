@@ -150,6 +150,28 @@ def delete_shopping_list():
 
     return redirect(url_for('index'))
 
+
+@app.route('/mark_item', methods=['GET', 'POST'])
+def mark_item():
+    """ Marks an item as bought or not bought """
+
+    if request.method == 'POST':
+        shopping_list_name = request.form['shoppinglist']
+        item_name = request.form['item_name']
+        checked = request.form['checked']
+
+        my_shoppinglist = get_shopping_list(shopping_list_name)
+        my_item = get_shopping_list_item(item_name, my_shoppinglist)
+
+        if checked == 'checked':
+            my_item.mark_item_as_bought()
+            return 'Marked as bought'
+        elif checked == 'not_checked':
+            my_item.mark_item_as_not_bought()
+            return 'Marked as not bought'
+        else:
+            return 'Neither checked nor checked. Very weird'
+
 def get_current_user():
     """ Returns the user that is currently logged in """
 
@@ -163,3 +185,10 @@ def get_shopping_list(name):
     for each in get_current_user().shopping_lists:
             if each.shopping_list_name == name:
                 return each
+
+def get_shopping_list_item(name, shopping_list):
+    """ Returns a shopping list item given the name """
+
+    for item in shopping_list.items:
+        if item.item_name == name:
+            return item
