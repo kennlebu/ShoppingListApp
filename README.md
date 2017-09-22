@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/kennlebu/ShoppingListApp.svg?branch=master)](https://travis-ci.org/kennlebu/ShoppingListApp)
+[![Coverage Status](https://coveralls.io/repos/github/kennlebu/ShoppingListApp/badge.svg?branch=master)](https://coveralls.io/github/kennlebu/ShoppingListApp?branch=master)
 
 # Da Shopping List
 #### Create shopping lists and never worry about forgetting to buy an item
