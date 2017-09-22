@@ -138,6 +138,18 @@ def add_item():
                            shopping_list=get_shopping_list(list_name),
                            edit=False)
 
+
+@app.route('/delete_shopping_list')
+def delete_shopping_list():
+    """ Deletes a shopping list """
+
+    list_name = request.args.get('shoppinglist')
+
+    # Remove the shopping list from the user's shopping lists
+    get_current_user().shopping_lists.remove(get_shopping_list(list_name))
+
+    return redirect(url_for('index'))
+
 def get_current_user():
     """ Returns the user that is currently logged in """
 

@@ -57,6 +57,7 @@
                 &nbsp;
                 <div style="float:right">
                     <form action="/delete_shopping_list">
+                        <input type="hidden" name="shoppinglist" value="{{ shopping_list.shopping_list_name }}">
                         <input class="btn btn-danger" type="submit" name="delete_list" value="Delete">
                     </form>
                 </div>
