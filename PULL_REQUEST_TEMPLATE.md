@@ -1,6 +1,6 @@
 #### Whats this PR do? 
-#### Where shoukd the reviewer start? 
-#### How shou this be manually tested? 
+#### Where should the reviewer start? 
+#### How should this be manually tested? 
 #### Any background context you want to provide? 
 #### What are the relevant tickets? 
 #### Screenshots (if any) 
